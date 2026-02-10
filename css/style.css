@@ -1,0 +1,188 @@
+/* -------------------------------------------------------------------------- */
+/* DEĞİŞKENLER & RESET                                                        */
+/* -------------------------------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap');
+
+:root {
+    --color-primary: #00629B;
+    --color-accent: #862633;
+    --color-secondary: #5F2167;
+    --color-text-dark: #1A1A1A;
+    --color-text-light: #FFFFFF;
+    --color-bg-light: #F8F9FA;
+    --color-bg-white: #FFFFFF;
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --container-width: 1200px;
+    --header-height: 80px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body { font-family: var(--font-body); color: var(--color-text-dark); background-color: var(--color-bg-white); line-height: 1.6; overflow-x: hidden; }
+img { max-width: 100%; height: auto; display: block; }
+a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
+ul { list-style: none; }
+.container { width: 90%; max-width: var(--container-width); margin: 0 auto; padding: 0 1rem; }
+
+/* -------------------------------------------------------------------------- */
+/* HEADER                                                                     */
+/* -------------------------------------------------------------------------- */
+.site-header { position: sticky; top: 0; background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); height: var(--header-height); box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); z-index: 1000; display: flex; align-items: center; }
+
+.site-header__container { 
+    display: flex; 
+    justify-content: space-between; /* Logo sola, Nav ortaya, Sağ kısım sağa */
+    align-items: center; 
+    width: 100%; 
+}
+
+.site-header__logo img { height: 50px; width: auto; object-fit: contain; }
+
+.site-nav__list { display: flex; gap: 2rem; }
+.site-nav__link { font-weight: 500; color: var(--color-text-dark); position: relative; padding-bottom: 4px; }
+.site-nav__link:hover { color: var(--color-accent); }
+.site-nav__link::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background-color: var(--color-accent); transform: scaleX(0); transform-origin: right; transition: transform 0.3s ease-out; }
+.site-nav__link:hover::after { transform: scaleX(1); transform-origin: left; }
+
+/* SAĞ TARAF: Bayrak ve Mobil Buton Grubu */
+.site-header__right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.site-header__flag {
+    height: 48px; /* Bayrak boyutu */
+    width: auto;
+    border-radius: 2px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.site-header__toggle { display: none; background: none; border: none; cursor: pointer; width: 30px; height: 20px; position: relative; z-index: 1001; }
+.site-header__toggle-icon, .site-header__toggle-icon::before, .site-header__toggle-icon::after { display: block; width: 100%; height: 2px; background-color: var(--color-primary); position: absolute; transition: all 0.3s ease; }
+.site-header__toggle-icon { top: 9px; }
+.site-header__toggle-icon::before { content: ''; top: -9px; }
+.site-header__toggle-icon::after { content: ''; top: 9px; }
+
+/* -------------------------------------------------------------------------- */
+/* HERO SECTION (YENİ DÜZEN)                                                  */
+/* -------------------------------------------------------------------------- */
+.hero { 
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary)); 
+    min-height: calc(100vh - var(--header-height)); 
+    display: flex; 
+    align-items: center; 
+    color: var(--color-text-light); 
+    padding: 4rem 0; 
+    text-align: center; /* Her şeyi ortala */
+}
+
+.hero__container { 
+    display: flex;
+    flex-direction: column; /* Alt alta sırala */
+    align-items: center;    /* Yatayda ortala */
+    gap: 2rem; 
+    max-width: 900px;       /* İçeriğin çok yayılmasını engelle */
+    margin: 0 auto;
+}
+
+.hero__title { 
+    font-family: var(--font-heading); 
+    font-size: 3rem; 
+    font-weight: 800; 
+    line-height: 1.2; 
+    color: var(--color-text-light); 
+}
+
+/* Görseli vurgulamak için boyut ve efektler */
+.hero__media {
+    width: 100%;
+    max-width: 800px; /* Görselin maksimum genişliği */
+    margin: 1rem 0;
+}
+
+.hero__image { 
+    border-radius: 20px; 
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4); 
+    object-fit: cover; 
+    width: 100%; 
+    height: auto;
+}
+
+.hero__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.hero__description { 
+    font-size: 1.25rem; 
+    opacity: 0.95; 
+    max-width: 600px;
+    line-height: 1.6;
+}
+
+.hero__actions { 
+    display: flex; 
+    gap: 1.5rem; 
+    justify-content: center;
+}
+
+/* Buton Stilleri */
+.btn { display: inline-flex; justify-content: center; align-items: center; padding: 1rem 2.5rem; font-weight: 600; border-radius: 8px; cursor: pointer; font-size: 1rem; transition: all 0.3s ease; }
+.btn--primary { background-color: var(--color-accent); color: var(--color-text-light); border: 2px solid var(--color-accent); }
+.btn--primary:hover { transform: scale(1.05); background-color: #6a1e28; border-color: #6a1e28; }
+.btn--secondary { background-color: transparent; border: 2px solid var(--color-text-light); color: var(--color-text-light); } /* Hero içinde border beyaz olsun diye güncelledim */
+.btn--secondary:hover { background-color: var(--color-text-light); color: var(--color-primary); }
+
+/* -------------------------------------------------------------------------- */
+/* SPONSORS & FOOTER (Standart)                                               */
+/* -------------------------------------------------------------------------- */
+.sponsors { padding: 5rem 0; background-color: var(--color-bg-light); overflow: hidden; }
+.section-header { text-align: center; margin-bottom: 3rem; }
+.section-title { font-family: var(--font-heading); font-size: 2.5rem; font-weight: 700; color: var(--color-primary); }
+.sponsors__slider { width: 100%; position: relative; }
+.sponsors__track { display: flex; align-items: center; gap: 4rem; width: max-content; animation: scroll 20s linear infinite; }
+.sponsors__item { width: 150px; display: flex; justify-content: center; }
+.sponsors__logo { filter: grayscale(100%); opacity: 0.6; transition: all 0.3s ease; max-height: 80px; }
+.sponsors__logo:hover { filter: grayscale(0); opacity: 1; transform: scale(1.05); }
+@keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+.site-footer { background-color: var(--color-secondary); color: var(--color-text-light); padding: 4rem 0 2rem; }
+.site-footer__container { display: flex; flex-direction: column; align-items: center; gap: 2rem; text-align: center; }
+.site-footer__social { display: flex; gap: 1.5rem; }
+.social-link { padding: 0.5rem 1rem; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; }
+.social-link:hover { background-color: #fff; color: var(--color-primary); }
+.site-footer__copyright { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; width: 100%; font-size: 0.875rem; opacity: 0.6; }
+
+/* -------------------------------------------------------------------------- */
+/* RESPONSIVE                                                                 */
+/* -------------------------------------------------------------------------- */
+@media (max-width: 992px) {
+    .hero__title { font-size: 2.5rem; }
+}
+
+@media (max-width: 768px) {
+    .site-header__toggle { display: block; }
+    
+    .site-nav {
+        display: none; 
+        position: absolute; top: 100%; left: 0; width: 100%; 
+        background-color: var(--color-bg-white); 
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1); 
+        border-top: 1px solid #eee;
+    }
+    .site-nav.site-nav--active { display: block; padding: 1.5rem 0; animation: slideDown 0.3s ease-out; }
+    .site-nav__list { flex-direction: column; align-items: center; gap: 1.5rem; }
+    @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* Mobilde Bayrak ve Menü İkonu yan yana */
+    .site-header__right { gap: 1rem; }
+
+    .hero__title { font-size: 1.8rem; }
+    .hero__description { font-size: 1rem; }
+    .hero__actions { flex-direction: column; width: 100%; max-width: 300px; }
+    .btn { width: 100%; }
+}
