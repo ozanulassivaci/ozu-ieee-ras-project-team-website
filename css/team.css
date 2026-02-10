@@ -1,0 +1,132 @@
+/* -------------------------------------------------------------------------- */
+/* SAYFA BAŞLIĞI                                                              */
+/* -------------------------------------------------------------------------- */
+.page-header {
+    text-align: center;
+    padding: 6rem 0 3rem;
+    margin-bottom: 3rem;
+    background: transparent; /* Arka planı kaldırdık ki animasyon görünsün */
+}
+
+/* Global class devreye girdiğinde başlık renklerini beyaz yap */
+body.ieee-animated-bg .page-title {
+    font-family: var(--font-heading);
+    color: #FFFFFF; /* Beyaz Metin */
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+body.ieee-animated-bg .page-subtitle {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9); /* Hafif şeffaf beyaz */
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* -------------------------------------------------------------------------- */
+/* DANIŞMAN KARTI (YATAY)                                                     */
+/* -------------------------------------------------------------------------- */
+.advisor-section { margin-bottom: 4rem; }
+
+.advisor-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--color-bg-white);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2); /* Gölgeyi artırdık */
+    overflow: hidden;
+    border-left: 8px solid var(--color-primary);
+}
+
+.advisor-card__image-wrapper { width: 100%; height: 300px; }
+.advisor-card__image { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.advisor-card__content { padding: 2rem; display: flex; flex-direction: column; justify-content: center; }
+.advisor-card__name { font-family: var(--font-heading); color: var(--color-primary); font-size: 1.8rem; margin-bottom: 0.5rem; }
+.advisor-card__title { font-size: 1.1rem; color: var(--color-accent); font-weight: 600; margin-bottom: 1rem; }
+.advisor-card__bio { opacity: 0.8; line-height: 1.6; margin-bottom: 1.5rem; color: var(--color-text-dark); }
+.badge--advisor { background-color: var(--color-bg-light); color: var(--color-text-dark); padding: 0.5rem 1rem; border-radius: 50px; font-size: 0.85rem; font-weight: 600; border: 1px solid #ddd; }
+
+@media (min-width: 768px) {
+    .advisor-card { flex-direction: row; }
+    .advisor-card__image-wrapper { width: 35%; height: auto; }
+    .advisor-card__content { width: 65%; padding: 3rem; }
+}
+
+/* -------------------------------------------------------------------------- */
+/* FİLTRE BUTONLARI (KOYU ZEMİN İÇİN GÜNCELLENDİ)                             */
+/* -------------------------------------------------------------------------- */
+.filters-section { margin-bottom: 3rem; text-align: center; }
+
+/* Buton grubu kapsayıcısını şeffaf yap */
+.button-group {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1); /* Glassmorphism efekti */
+    backdrop-filter: blur(10px);
+    padding: 0.5rem;
+    border-radius: 50px;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.button {
+    background: transparent;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8); /* Açık renk yazı */
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.button:hover { color: #fff; background-color: rgba(255,255,255,0.1); }
+
+.button.is-checked {
+    background-color: #fff; /* Seçili buton beyaz */
+    color: var(--color-primary); /* Yazısı mavi */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    opacity: 1;
+}
+
+/* -------------------------------------------------------------------------- */
+/* EKİP GRID & KART TASARIMI                                                  */
+/* -------------------------------------------------------------------------- */
+.team-section { margin-bottom: 5rem; min-height: 600px; }
+.team-grid:after { content: ''; display: block; clear: both; }
+
+.team-member { position: relative; float: left; width: 100%; padding: 10px; }
+@media (min-width: 600px) { .team-member { width: 50%; } }
+@media (min-width: 992px) { .team-member { width: 33.33%; } }
+@media (min-width: 1200px) { .team-member { width: 25%; } }
+
+/* Kart Stili (Beyaz kalarak kontrast oluşturur) */
+.member-card {
+    background: var(--color-bg-white);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border: 1px solid rgba(0,0,0,0.03);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.member-card:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0,0,0,0.2); }
+.member-card__image { width: 100%; height: 280px; overflow: hidden; background-color: #eee; }
+.member-card__image img { width: 100%; height: 100%; object-fit: cover; object-position: top center; transition: transform 0.5s ease; }
+.member-card:hover .member-card__image img { transform: scale(1.05); }
+
+.member-card__content { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
+.member-name { font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; color: var(--color-text-dark); margin-bottom: 0.25rem; }
+.member-role { font-size: 0.8rem; font-weight: 700; color: var(--color-accent); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.5px; }
+.member-badges { margin-top: auto; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.badge { display: inline-block; padding: 0.35rem 0.75rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; }
+.badge--primary { background-color: var(--color-primary); color: var(--color-bg-white); border: 1px solid var(--color-primary); }
+.badge--secondary { background-color: transparent; color: var(--color-secondary); border: 1px solid var(--color-secondary); opacity: 0.8; }
