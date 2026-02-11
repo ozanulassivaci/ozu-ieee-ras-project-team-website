@@ -1,0 +1,99 @@
+/* assets/css/sponsors.css */
+
+/* -------------------------------------------------------------------------- */
+/* SPONSORS PAGE - EMPTY STATE (BİLGİ KARTI)                                  */
+/* -------------------------------------------------------------------------- */
+
+/* Kartı dikey ve yatayda ortalamak için kapsayıcı */
+.sponsor-empty-wrapper {
+    min-height: calc(100vh - var(--header-height) - 150px); /* Header ve Footer payı */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+}
+
+/* Modern Bilgi Kartı */
+.sponsor-empty-card {
+    background: rgba(255, 255, 255, 0.9); /* %90 Opak Beyaz */
+    backdrop-filter: blur(10px);          /* Glassmorphism etkisi */
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    text-align: center;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    
+    /* Giriş Animasyonu */
+    opacity: 0;
+    transform: scale(0.9);
+    animation: cardPopIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sponsor-empty-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+}
+
+/* İkon */
+.sponsor-card__icon {
+    font-size: 3rem;
+    color: var(--color-secondary);
+    margin-bottom: 1.5rem;
+    display: inline-block;
+}
+
+.sponsor-card__icon svg {
+    width: 64px;
+    height: 64px;
+    fill: currentColor;
+}
+
+/* Metinler */
+.sponsor-card__title {
+    font-family: var(--font-heading);
+    color: var(--color-primary);
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+}
+
+.sponsor-card__text {
+    font-size: 1.1rem;
+    color: #4a4a4a;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+/* Link */
+.sponsor-card__link {
+    display: inline-block;
+    color: var(--color-accent);
+    font-weight: 700;
+    font-size: 1.2rem;
+    text-decoration: none;
+    padding-bottom: 2px;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.sponsor-card__link:hover {
+    color: #5a1a22;
+    border-bottom-color: #5a1a22;
+}
+
+/* Animasyon Keyframes */
+@keyframes cardPopIn {
+    0% { opacity: 0; transform: scale(0.9) translateY(20px); }
+    100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Mobil */
+@media (max-width: 768px) {
+    .sponsor-empty-card { padding: 2rem 1.5rem; }
+    .sponsor-card__title { font-size: 1.5rem; }
+    .sponsor-card__text { font-size: 1rem; }
+}
